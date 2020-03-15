@@ -61,7 +61,7 @@ function log(message) {
 }
 
 function reloadResources() {
-    $(".resourse-amount").each(function (index, elem) {
+    $(".resource-amount").each(function (index, elem) {
         const name = $(elem).attr("id").split("amount-")[1];
         const amount = resources[name].amount;
         $(this).text(amount);
