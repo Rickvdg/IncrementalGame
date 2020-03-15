@@ -11,3 +11,12 @@ body {
     width: 100%;
     transition: width 1s linear;
 }
+
+#console-window {
+    margin-top: 20px;
+}
+
+#console-window > .card-body {
+    height: 200px;
+    overflow-y: auto;
+}

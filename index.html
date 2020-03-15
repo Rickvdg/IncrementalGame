@@ -73,6 +73,12 @@
                             </table>
                         </div>
                     </div>
+                    <div class="card" id="console-window">
+                        <div class="card-header">Messages</div>
+                        <div class="card-body">
+
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card text-white bg-dark mb-3">
@@ -82,7 +88,7 @@
                                 <button type="button" class="btn btn-block btn-warning" onclick="villagers.amount = villagers.amount + 1; reloadResources();">Add worker</button>
                             </div>
                             <div class="form-group d-flex justify-content-between">
-                                <button type="button" class="btn btn-warning" onclick="villagers.amount = villagers.amount - 1; resources.wheat.autoincrease = resources.wheat.autoincrease - 1; reloadResources();"><</button>
+                                <button type="button" class="btn btn-warning" onclick="villagers.amount = villagers.amount + 1; resources.wheat.autoincrease = resources.wheat.autoincrease - 1; reloadResources();"><</button>
                                 <span class="control-label">Farmers</span>
                                 <button type="button" class="btn btn-warning" onclick="villagers.amount = villagers.amount - 1; resources.wheat.autoincrease = resources.wheat.autoincrease + 1; reloadResources();">></button>
                             </div>

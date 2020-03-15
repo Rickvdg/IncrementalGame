@@ -1,13 +1,16 @@
 
 function collectWheat(caller) {
+    log("Collected wheat.");
     collect(caller, "wheat", 1);
 }
 
 function collectStone(caller) {
+    log("Collected stone.");
     collect(caller, "stone", 1);
 }
 
 function collectWood(caller) {
+    log("Collected wood.");
     collect(caller, "wood", 1);
 }
 
@@ -38,6 +41,15 @@ function collect(caller, resource, amount) {
 
             reloadResources();
         }, 1000);
+    }
+}
+
+function log(message) {
+    // Add the message as a div
+    $("#console-window > .card-body").prepend("<div>" + message + "</div>");
+    
+    if ($("#console-window > .card-body > div").length > 50) {
+        $("#console-window > .card-body > div:last-child").remove();
     }
 }
 
