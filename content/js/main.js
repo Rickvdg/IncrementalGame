@@ -51,6 +51,56 @@ function collect(caller, resource, amount, callback) {
     }
 }
 
+function addWorker(resource) {
+    switch(resource) {
+        case "wheat":
+            workers.farmers.amount = workers.farmers.amount + 1;
+            resources.wheat.autoincrease = resources.wheat.autoincrease + 1; 
+            break;
+        case "stone":
+            workers.stoneminers.amount = workers.stoneminers.amount + 1;
+            resources.stone.autoincrease = resources.stone.autoincrease + 1; 
+            break;
+        case "wood":
+            workers.lumberjacks.amount = workers.lumberjacks.amount + 1;
+            resources.wood.autoincrease = resources.wood.autoincrease + 1; 
+            break;
+    }
+    
+    reloadResources();
+}
+
+function removeWorker(resource) {
+    switch(resource) {
+        case "wheat":
+            if (workers.farmers.amount === 0) {
+                log("You don't have any farmers to sell.")
+                return;
+            }
+            workers.farmers.amount = workers.farmers.amount - 1;
+            resources.wheat.autoincrease = resources.wheat.autoincrease - 1; 
+            break;
+        case "stone":
+            if (workers.stoneminers.amount === 0) {
+                log("You don't have any stone miners to sell.")
+                return;
+            }
+            workers.stoneminers.amount = workers.stoneminers.amount - 1;
+            resources.stone.autoincrease = resources.stone.autoincrease - 1; 
+            break;
+        case "wood":
+            if (workers.lumberjacks.amount === 0) {
+                log("You don't have any lumberjacks to sell.")
+                return;
+            }
+            workers.lumberjacks.amount = workers.lumberjacks.amount - 1;
+            resources.wood.autoincrease = resources.wood.autoincrease - 1; 
+            break;
+    }
+    
+    reloadResources();
+}
+
 function log(message) {
     // Add the message as a div
     $("#console-window > .card-body").prepend("<div>" + message + "</div>");
@@ -66,8 +116,13 @@ function reloadResources() {
         const amount = resources[name].amount;
         $(this).text(amount);
     });
-
-    $("#workers-amount").text(villagers.amount);
+    // Possibly in seperate reloadWorkers function
+    $(".worker-amount-div > div > span").each(function (index, elem) {
+        console.log(elem);
+        const name = $(elem).attr("id").split("amount-")[1];
+        const amount = workers[name].amount;
+        $(this).html(amount);
+    });
 }
 
 // Use timeouts instead of intervals to make use of changing game loop speeds

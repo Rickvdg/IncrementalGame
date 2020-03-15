@@ -82,19 +82,28 @@
                 </div>
                 <div class="col-md-3">
                     <div class="card text-white bg-dark mb-3">
-                        <div class="card-header">Debug window</div>
+                        <div class="card-header">Workers</div>
                         <div class="card-body">
-                            <div class="form-group">
-                                <button type="button" class="btn btn-block btn-warning" onclick="villagers.amount = villagers.amount + 1; reloadResources();">Add worker</button>
+                            <div class="form-group d-flex justify-content-between">
+                                <button type="button" class="btn btn-warning" onclick="removeWorker('wheat')">Sell</button>
+                                <span class="control-label">Farmer</span>
+                                <button type="button" class="btn btn-warning" onclick="addWorker('wheat')">Buy</button>
                             </div>
                             <div class="form-group d-flex justify-content-between">
-                                <button type="button" class="btn btn-warning" onclick="villagers.amount = villagers.amount + 1; resources.wheat.autoincrease = resources.wheat.autoincrease - 1; reloadResources();"><</button>
-                                <span class="control-label">Farmers</span>
-                                <button type="button" class="btn btn-warning" onclick="villagers.amount = villagers.amount - 1; resources.wheat.autoincrease = resources.wheat.autoincrease + 1; reloadResources();">></button>
+                                <button type="button" class="btn btn-warning" onclick="removeWorker('stone')">Sell</button>
+                                <span class="control-label">Stone Miner</span>
+                                <button type="button" class="btn btn-warning" onclick="addWorker('stone')">Buy</button>
+                            </div>
+                            <div class="form-group d-flex justify-content-between">
+                                <button type="button" class="btn btn-warning" onclick="removeWorker('wood')">Sell</button>
+                                <span class="control-label">Lumberjack</span>
+                                <button type="button" class="btn btn-warning" onclick="addWorker('wood')">Buy</button>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            Workers: <span id="workers-amount">0</span>
+                        <div class="card-footer worker-amount-div">
+                            <div>Farmers: <span id="amount-farmers">0</span></div>
+                            <div>Stone Miners: <span id="amount-stoneminers">0</span></div>
+                            <div>Lumberjacks: <span id="amount-lumberjacks">0</span></div>
                         </div>
                     </div>
                 </div>
