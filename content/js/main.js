@@ -43,3 +43,16 @@ function reloadResources() {
         $(this).text(amount);
     });
 }
+
+// Use timeouts instead of intervals to make use of changing game loop speeds
+var gameloopSpeed = 1000;
+(function loop(timer) {
+    setTimeout(function() {
+        // Collect the automated values
+        collect(null, "wheat", elements.wheat.autoincrease);
+        collect(null, "stone", elements.stone.autoincrease);
+        collect(null, "wood", elements.wood.autoincrease);
+
+        loop(gameloopSpeed);
+    }, timer)
+})(1000);
