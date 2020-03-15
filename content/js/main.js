@@ -1,20 +1,23 @@
 
 function collectWheat(caller) {
-    log("Collected wheat.");
-    collect(caller, "wheat", 1);
+    collect(caller, "wheat", 1, function () {
+        log("Collected wheat.");
+    });
 }
 
 function collectStone(caller) {
-    log("Collected stone.");
-    collect(caller, "stone", 1);
+    collect(caller, "stone", 1, function() {
+        log("Collected stone.");
+    });
 }
 
 function collectWood(caller) {
-    log("Collected wood.");
-    collect(caller, "wood", 1);
+    collect(caller, "wood", 1, function() {
+        log("Collected wood.");
+    });
 }
 
-function collect(caller, resource, amount) {
+function collect(caller, resource, amount, callback) {
     let element;
     const $progressBar = $(caller).parents(".form-group").find(".progress-bar");
     
@@ -41,6 +44,10 @@ function collect(caller, resource, amount) {
 
             reloadResources();
         }, 1000);
+    }
+
+    if (callback != null && typeof callback === "function") {
+        callback();
     }
 }
 
