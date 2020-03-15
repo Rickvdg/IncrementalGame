@@ -43,11 +43,11 @@ function collect(caller, resource, amount, callback) {
             }
 
             reloadResources();
-        }, 1000);
-    }
 
-    if (callback != null && typeof callback === "function") {
-        callback();
+            if (callback != null && typeof callback === "function") {
+                callback();
+            }
+        }, 1000);
     }
 }
 
