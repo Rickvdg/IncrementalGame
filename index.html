@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Incremental Game</title>
+
+        <link rel="stylesheet" type="text/css" href="content/css/site.css" />
+        <link rel="stylesheet" type="text/css" href="content/bootstrap-4.4.1-dist/css/bootstrap.min.css" />
+
+        <script type="text/javascript" src="content/js/variables.js"></script>
+        <script type="text/javascript" src="content/js/main.js"></script>
+        <script type="text/javascript" src="content/js/jquery/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="content/bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container" style="margin-top: 50px;">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <button class="btn btn-block btn-primary" type="button" onclick="collectWheat(this)">Collect wheat</button>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-block btn-primary" type="button" onclick="collectStone(this)">Collect stone</button>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-block btn-primary" type="button" onclick="collectWood(this)">Collect wood</button>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <table class="table">
+                        <tr>
+                            <th>Wheat</th>
+                            <td class="resourse-amount" id="amount-wheat">0</td>
+                        </tr>
+                        <tr>
+                            <th>Stone</th>
+                            <td class="resourse-amount" id="amount-stone">0</td>
+                        </tr>
+                        <tr>
+                            <th>Wood</th>
+                            <td class="resourse-amount" id="amount-wood">0</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

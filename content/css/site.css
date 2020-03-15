@@ -1,0 +1,9 @@
+.progress > .progress-bar {
+    width: 0%;
+    transition: none;
+}
+
+.progress > .progress-bar.active {
+    width: 100%;
+    transition: width 1s linear;
+}
