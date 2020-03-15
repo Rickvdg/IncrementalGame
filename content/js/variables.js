@@ -1,4 +1,4 @@
-let elements = {
+let resources = {
     "wheat": {
         "id": 0,
         "amount": 0,
@@ -17,4 +17,8 @@ let elements = {
         "stockpile": 100,
         "autoincrease": 0
     }
+}
+
+let villagers = {
+    "amount": 0
 }
