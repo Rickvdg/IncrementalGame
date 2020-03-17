@@ -24,14 +24,18 @@ function unlock(unlockable) {
     // Maybe cleaner way to do this
     let currentUnlockable = unlockables[unlockable];
     if (resources[currentUnlockable.resource].amount >= currentUnlockable.cost) {
-        resources[currentUnlockable.resource].amount = resources[currentUnlockable.resource].amount - currentUnlockable.cost
+        // Remove the cost from the inventory
+        resources[currentUnlockable.resource].amount -= currentUnlockable.cost;
         currentUnlockable.locked = false;
-        $("#" + unlockable + "Img").css("opacity", "100");
-        // Maybe better to remove the element
-        $("#" + unlockable + "Unlock").css("display", "none");
+
+        // Remove the buy button and background opacity
+        const $div = $("#" + unlockable + "Div");
+        $div.find(".card.locked").removeClass("locked");
+        $div.find(".unlock-button").remove();
+        $div.find(".card-body > .d-none").removeClass("d-none");
+
         log("You unlocked the " + unlockable + ".");
-    }
-    else {
+    } else {
         log("You don't have enough " + currentUnlockable.resource + ".");
     }
     reloadResources();
@@ -71,14 +75,46 @@ function collect(caller, resource, amount, callback) {
     }
 }
 
+function craft(caller, item, callback) {
+    let element = craftingItems[item];
+    const $progressBar = $(caller).parents(".form-group").find(".progress-bar");
+
+    for (var key in element.cost) {
+        // skip loop if the property is from prototype
+        if (!element.cost.hasOwnProperty(key)) continue;
+    
+        // Skip the rest of the function if there are not enough resources
+        if (resources[key].amount < element.cost[key]) {
+            log("You don't have enough " + key + " to craft " + item + ".");
+            return;
+        }
+    }
+
+    if (!$progressBar.hasClass("active")) {
+        // Set the loading bar to active to play the animation
+        $progressBar.addClass("active");
+    
+        // Add the resource to the total amount after the loading bar animation
+        setTimeout(function() {
+            $progressBar.removeClass("active");
+            element.amount++;
+    
+            reloadResources();
+    
+            if (callback != null && typeof callback === "function") {
+                callback();
+            }
+        }, 3000);
+    }
+}
+
 function addVillager(resource) {
     let villager_cost = getVillagerCost();
     if (resources.stone.amount >= villager_cost) {
-        villager.amount = villager.amount + 1;
-        resources.stone.amount = resources.stone.amount - villager_cost;
+        villager.amount++;
+        resources.stone.amount -= villager_cost;
         log("Succesfully bought a new villager.")
-    }
-    else {
+    } else {
         log("You don't have enough stone to buy a new villager.")
     }
     

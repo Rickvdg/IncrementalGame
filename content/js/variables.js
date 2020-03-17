@@ -24,9 +24,26 @@ let villager = {
 }
 
 let unlockables = {
+    "craftingStation": {
+        "locked": true,
+        "cost": 20,
+        "resource": "stone",
+        "level": 1
+    },
     "stoneQuarry": {
         "locked": true,
-        "cost" : 35,
-        "resource": "wheat"
+        "cost": 35,
+        "resource": "wheat",
+        "level": 1
+    }
+}
+
+let craftingItems = {
+    "bread": {
+        "amount": 0,
+        "cost": {
+            "wheat": 20,
+            "wood": 1
+        }
     }
 }

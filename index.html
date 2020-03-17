@@ -94,12 +94,38 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div id="craftingStationDiv" class="col-md-4">
+                    <div class="card mb-4 locked">
+                        <div class="card-header">Crafting station</div>
+                        <div class="card-body image-div">
+                            <img class="unlockable-img" src="content/assets/harold.jpg">
+                            <button type="button" onclick="unlock('craftingStation')" class="btn btn-warning unlock-button">Unlock for 20 stone</button>
+
+                            <div class="d-none">
+                                <div class="form-group">
+                                    <!-- Misschien moet het craften van brood wel bij een 'bakery' -->
+                                    <button type="button" class="btn btn-primary btn-block" onclick="craft(this, 'bread')">Craft bread (20 wheat, 1 wood)</button>
+                                    <div class="progress">
+                                        <div class="progress-bar long" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="stoneQuarryDiv" class="col-md-4">
-                    <div class="card mb-4">
+                    <div class="card mb-4 locked">
                         <div class="card-header">Stone quarry</div>
                         <div class="card-body image-div">
-                            <img id="stoneQuarryImg" src="content/assets/stoneQuarry.jpg">
-                            <button id="stoneQuarryUnlock" type="button" onclick="unlock('stoneQuarry')" class="btn btn-warning">Unlock for 35 wheat</button>
+                            <img class="unlockable-img" src="content/assets/stoneQuarry.jpg">
+                            <button type="button" onclick="unlock('stoneQuarry')" class="btn btn-warning unlock-button">Unlock for 35 wheat</button>
+                            
+                            <div class="d-none">
+
+                            </div>
                         </div>
                     </div>
                 </div>
