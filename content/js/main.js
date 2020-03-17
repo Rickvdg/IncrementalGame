@@ -51,52 +51,14 @@ function collect(caller, resource, amount, callback) {
     }
 }
 
-function addWorker(resource) {
-    switch(resource) {
-        case "wheat":
-            workers.farmers.amount = workers.farmers.amount + 1;
-            resources.wheat.autoincrease = resources.wheat.autoincrease + 1; 
-            break;
-        case "stone":
-            workers.stoneminers.amount = workers.stoneminers.amount + 1;
-            resources.stone.autoincrease = resources.stone.autoincrease + 1; 
-            break;
-        case "wood":
-            workers.lumberjacks.amount = workers.lumberjacks.amount + 1;
-            resources.wood.autoincrease = resources.wood.autoincrease + 1; 
-            break;
-    }
+function addVillager(resource) {
+    villager.amount = villager.amount + 1;
     
     reloadResources();
 }
 
 function removeWorker(resource) {
-    switch(resource) {
-        case "wheat":
-            if (workers.farmers.amount === 0) {
-                log("You don't have any farmers to sell.")
-                return;
-            }
-            workers.farmers.amount = workers.farmers.amount - 1;
-            resources.wheat.autoincrease = resources.wheat.autoincrease - 1; 
-            break;
-        case "stone":
-            if (workers.stoneminers.amount === 0) {
-                log("You don't have any stone miners to sell.")
-                return;
-            }
-            workers.stoneminers.amount = workers.stoneminers.amount - 1;
-            resources.stone.autoincrease = resources.stone.autoincrease - 1; 
-            break;
-        case "wood":
-            if (workers.lumberjacks.amount === 0) {
-                log("You don't have any lumberjacks to sell.")
-                return;
-            }
-            workers.lumberjacks.amount = workers.lumberjacks.amount - 1;
-            resources.wood.autoincrease = resources.wood.autoincrease - 1; 
-            break;
-    }
+    villager.amount = villager.amount -1;
     
     reloadResources();
 }
@@ -116,13 +78,9 @@ function reloadResources() {
         const amount = resources[name].amount;
         $(this).text(amount);
     });
-    // Possibly in seperate reloadWorkers function
-    $(".worker-amount-div > div > span").each(function (index, elem) {
-        console.log(elem);
-        const name = $(elem).attr("id").split("amount-")[1];
-        const amount = workers[name].amount;
-        $(this).html(amount);
-    });
+    // Possibly in seperate reloadVillagers function
+    $(".villager-amount-div > div > span").html(villager.amount);
+        
 }
 
 // Use timeouts instead of intervals to make use of changing game loop speeds

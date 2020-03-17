@@ -82,28 +82,16 @@
                 </div>
                 <div class="col-md-3">
                     <div class="card text-white bg-dark mb-3">
-                        <div class="card-header">Workers</div>
+                        <div class="card-header">Villagers</div>
                         <div class="card-body">
                             <div class="form-group d-flex justify-content-between">
-                                <button type="button" class="btn btn-warning" onclick="removeWorker('wheat')">Sell</button>
-                                <span class="control-label">Farmer</span>
-                                <button type="button" class="btn btn-warning" onclick="addWorker('wheat')">Buy</button>
-                            </div>
-                            <div class="form-group d-flex justify-content-between">
-                                <button type="button" class="btn btn-warning" onclick="removeWorker('stone')">Sell</button>
-                                <span class="control-label">Stone Miner</span>
-                                <button type="button" class="btn btn-warning" onclick="addWorker('stone')">Buy</button>
-                            </div>
-                            <div class="form-group d-flex justify-content-between">
-                                <button type="button" class="btn btn-warning" onclick="removeWorker('wood')">Sell</button>
-                                <span class="control-label">Lumberjack</span>
-                                <button type="button" class="btn btn-warning" onclick="addWorker('wood')">Buy</button>
+                                <button type="button" class="btn btn-warning" onclick="removeVillager('wheat')">Sell</button>
+                                <span class="control-label">Villager</span>
+                                <button type="button" class="btn btn-warning" onclick="addVillager('wheat')">Buy</button>
                             </div>
                         </div>
-                        <div class="card-footer worker-amount-div">
-                            <div>Farmers: <span id="amount-farmers">0</span></div>
-                            <div>Stone Miners: <span id="amount-stoneminers">0</span></div>
-                            <div>Lumberjacks: <span id="amount-lumberjacks">0</span></div>
+                        <div class="card-footer villager-amount-div">
+                            <div>Villagers: <span id="amount-villager">0</span></div>
                         </div>
                     </div>
                 </div>

@@ -19,17 +19,6 @@ let resources = {
     }
 }
 
-let workers = {
-    "farmers": {
-        "id": 0,
-        "amount": 0,
-    },
-    "stoneminers": {
-        "id": 1,
-        "amount": 0,
-    },
-    "lumberjacks": {
-        "id": 2,
-        "amount": 0,
-    }
+let villager = {
+    "amount": 0
 }
