@@ -22,3 +22,11 @@ let resources = {
 let villager = {
     "amount": 0
 }
+
+let unlockables = {
+    "stoneQuarry": {
+        "locked": true,
+        "cost" : 35,
+        "resource": "wheat"
+    }
+}

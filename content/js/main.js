@@ -20,6 +20,23 @@ function getVillagerCost() {
     return villager.amount * 5 + 5;
 }
 
+function unlock(unlockable) {
+    // Maybe cleaner way to do this
+    let currentUnlockable = unlockables[unlockable];
+    if (resources[currentUnlockable.resource].amount >= currentUnlockable.cost) {
+        resources[currentUnlockable.resource].amount = resources[currentUnlockable.resource].amount - currentUnlockable.cost
+        currentUnlockable.locked = false;
+        $("#" + unlockable + "Img").css("opacity", "100");
+        // Maybe better to remove the element
+        $("#" + unlockable + "Unlock").css("display", "none");
+        log("You unlocked the " + unlockable + ".");
+    }
+    else {
+        log("You don't have enough " + currentUnlockable.resource + ".");
+    }
+    reloadResources();
+}
+
 function collect(caller, resource, amount, callback) {
     let element;
     const $progressBar = $(caller).parents(".form-group").find(".progress-bar");
