@@ -1,4 +1,3 @@
-
 function collectWheat(caller) {
     collect(caller, "wheat", 1, function () {
         log("Collected wheat.");
@@ -15,6 +14,10 @@ function collectWood(caller) {
     collect(caller, "wood", 1, function() {
         log("Collected wood.");
     });
+}
+
+function getVillagerCost() {
+    return villager.amount * 5 + 5;
 }
 
 function collect(caller, resource, amount, callback) {
@@ -52,13 +55,15 @@ function collect(caller, resource, amount, callback) {
 }
 
 function addVillager(resource) {
-    villager.amount = villager.amount + 1;
-    
-    reloadResources();
-}
-
-function removeWorker(resource) {
-    villager.amount = villager.amount -1;
+    let villager_cost = getVillagerCost();
+    if (resources.stone.amount >= villager_cost) {
+        villager.amount = villager.amount + 1;
+        resources.stone.amount = resources.stone.amount - villager_cost;
+        log("Succesfully bought a new villager.")
+    }
+    else {
+        log("You don't have enough stone to buy a new villager.")
+    }
     
     reloadResources();
 }
@@ -80,6 +85,7 @@ function reloadResources() {
     });
     // Possibly in seperate reloadVillagers function
     $(".villager-amount-div > div > span").html(villager.amount);
+    $(".villager-cost").html("Villager: " + getVillagerCost() + " stone")
         
 }
 
